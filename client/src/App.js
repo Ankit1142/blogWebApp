@@ -8,6 +8,8 @@ import {Box} from '@material-ui/core';
 import Header from './components/Header';
 import Home from './components/home/Home';
 import DetailView from './components/post/DetailView';
+import CreateView from './components/post/CreateView';
+import UpdateView from './components/post/Update';
 // import Banner from './components/home/Banner';
 // import Categories from './components/home/Categories';
 function App() {
@@ -16,8 +18,10 @@ function App() {
        <Header/>
        <Box style={{marginTop:64}}>
        <Routes>
-          <Route exact path='/' component= {Home}/>
-          <Route exact path='/details' component={DetailView}/>
+          <Route exact path='/' element= {<Home/>}/>
+          <Route exact path='/details' element={<DetailView/>}/>
+          <Route exact path='/create'  element={<CreateView/>}/>
+          <Route exact path='/update'  element={<UpdateView/>}/>
         </Routes>
        </Box>
      </BrowserRouter>
