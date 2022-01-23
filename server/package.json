@@ -1,7 +1,7 @@
 {
-  "name": "my-server",
+  "name": "server",
   "version": "1.0.0",
-  "description": "blog project",
+  "description": "blog app",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -11,7 +11,10 @@
   "author": "Ankit Kumar",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
-    "nodemon": "^2.0.15"
+    "mongoose": "^6.1.7",
+    "nodemon": "2.0.15"
   }
 }

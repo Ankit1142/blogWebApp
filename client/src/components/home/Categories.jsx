@@ -3,17 +3,19 @@ import { categories } from "../../constants/data";
 import {Link} from 'react-router-dom';
 
 const useStyle = makeStyles({
- create : {
+//  create : {
    
-    background:'#6495ED',
-    margin:'40px',
-   color:'#fff',
-   width:'84%'
-},
+//     background:'#6495ED',
+//     margin:'40px',
+//    color:'#fff',
+//    width:'100%'
+// },
 table : {
-    marginLeft:'25px',
+     width:'140px',
+    margin:'5px 15px 15px 40px',
     border : '1px solid rgba(224,224,224,1)',
-    padding : '50px'
+    // display:'inline'
+   
 }
 
 })
@@ -24,18 +26,17 @@ const Categories =() =>{
   const classes = useStyle();
     return(
        <>
-       <Link to ='/create'>
-       <button type="button" className={classes.create} className={'btn-outline-primary btn-lg'} style={{margin:'20px'}} >Create Blog</button>
-       {/* <button  variant="outlined" className={classes.create}>Create Blog</button> */}
-       </Link>
+    
+       <Link to='/create'>
+            <button  className="btn btn-outline-primary btn-lg" style={{margin:'15px 10px 15px 35px'}}>CREATE BLOG</button>
+            </Link>
        <table className={classes.table}>
-           <TableHead>
+           <TableHead >
                <TableRow>
                    <TableCell>All Categories</TableCell>
-                   {/* <TableCell>balla ne balli ko dant dia</TableCell> */}
                </TableRow>
            </TableHead>
-           <tablebody>
+           <tablebody >
               {
                   categories.map(category=>(
                       <TableRow> 

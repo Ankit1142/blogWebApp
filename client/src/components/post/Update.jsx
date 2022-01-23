@@ -42,7 +42,7 @@ const UpdateView = ()=> {
            <FormControl className={classes.form}>
                <AddCircle fontSize='large' color='action' />
                <InputBase placeholder='Title' className={classes.textfield} />
-               <button type="button" class="btn btn-outline-success">Update</button>
+               <button type="button" className="btn btn-outline-success">Update</button>
            </FormControl>
 
            <TextareaAutosize

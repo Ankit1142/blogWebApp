@@ -37,8 +37,8 @@ const useStyle = makeStyles((theme)=>({
 }));
 
 const initialValues = {
-    title:'',
-    description:'',
+    title:'blog',
+    description:'simple blogs',
     picture:'',
     username:'codeForSelf',
     categories:'All',
@@ -51,6 +51,7 @@ const CreateView = ()=> {
     const url ='https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
     
     const [post,setPost] = useState(initialValues);
+
     const handleChange =(e) =>{
       setPost({...post, [e.target.name] : e.target.value  })
     } 
@@ -66,15 +67,15 @@ const CreateView = ()=> {
            <FormControl className={classes.form}>
                <AddCircle fontSize='large' color='action' />
                <InputBase 
-               onChange={ (e)=> handleChange(e) } 
-               placeholder='Title' className={classes.textfield} 
-               name='title'
+                  onChange={ (e)=> handleChange(e) } 
+                  placeholder='Title' className={classes.textfield} 
+                  name='title'
                />
-               <button onClick={savePost()} type="button" class="btn btn-outline-success">Publish</button>
+               <button   type="button"  className="btn btn-outline-success">Publish</button>
            </FormControl>
 
            <TextareaAutosize
-           rowsMin={5}
+           minRows={5}
            placeholder='Tell your story'
            className={classes.textarea}
            onChange={ (e)=> handleChange(e) } 
