@@ -88,7 +88,7 @@ const CreateView = ()=> {
 
            <TextareaAutosize
            minRows={5}
-           placeholder='Tell your story'
+           placeholder='Tell me your story...'
            className={classes.textarea}
            onChange={ (e)=> handleChange(e) } 
            name='description'

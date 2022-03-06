@@ -35,21 +35,22 @@ const useStyles = makeStyles({
     }
 })
 
-const Post = () => {
-
+const Post = ({ post }) => {
     const classes = useStyles();
-    const url = 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZGVzayUyMHNldHVwfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80';
+    const URL = post.picture ? post.picture : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
+    
+    const addEllipsis = (str, limit) => {
+        return str.length > limit ? str.substring(0, limit) + '...' : str;
+    } 
 
     return (
-        <>
-            <Box className = {classes.container}>
-                <img className = {classes.image} src = {url} alt = 'postimage' />
-                <Typography className = {classes.textColor}>DSA</Typography>
-                <Typography className = {classes.heading}>Binary Tree</Typography>
-                <Typography className = {classes.textColor}>Auther: Ankit Kumar</Typography>
-                <Typography className = {classes.detail}>check if the binary tree is balanced or not</Typography>
-            </Box>
-        </> 
+        <Box className={classes.container}>
+            <img src={URL} alt="post" className={classes.image} />
+            <Typography className={classes.textColor}>{post.categories}</Typography>
+            <Typography className={classes.heading}>{addEllipsis(post.title, 20)}</Typography>
+            <Typography className={classes.textColor}>Author: {post.username}</Typography>
+            <Typography className={classes.detail}>{addEllipsis(post.description, 100)}</Typography>
+        </Box>
     )
 }
 
