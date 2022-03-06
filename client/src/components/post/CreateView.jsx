@@ -1,7 +1,15 @@
-import { useState } from 'react';
-import {Box,makeStyles,FormControl, InputBase,TextareaAutosize} from '@material-ui/core';
+import {React, useState, useEffect, useContext } from 'react';
+import {Box,Button ,makeStyles,FormControl, InputBase,TextareaAutosize} from '@material-ui/core';
 import {AddCircle} from '@material-ui/icons'; 
 import { createPost } from '../../service/api';
+import { useNavigate, Link,useLocation } from 'react-router-dom';
+
+
+import { AddCircle as Add, CallEnd } from '@material-ui/icons';
+
+
+import { uploadFile } from '../../service/api';
+//import { LoginContext } from '../../context/ContextProvider';
 
 const useStyle = makeStyles((theme)=>({
     container:{
@@ -49,29 +57,33 @@ const initialValues = {
 const CreateView = ()=> {
     const classes=useStyle();
     const url ='https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
-    
+    const history=useNavigate();
     const [post,setPost] = useState(initialValues);
 
-    const handleChange =(e) =>{
-      setPost({...post, [e.target.name] : e.target.value  })
-    } 
-   
-    const savePost = async() => {
-        await createPost(post);
+    const savePost = async () => {
+         await createPost(post);
+        // history.push('/');
+        history('/', { state: post });
+    }
+
+    const handleChange = (e) => {
+        setPost({ ...post, [e.target.name]: e.target.value });
     }
 
 
+
     return( 
-       <Box className={classes.container}>
+       <>
+      
+        <Box className={classes.container}>
            <img src={url} alt="banner" className={classes.image}/>
            <FormControl className={classes.form}>
                <AddCircle fontSize='large' color='action' />
-               <InputBase 
-                  onChange={ (e)=> handleChange(e) } 
-                  placeholder='Title' className={classes.textfield} 
-                  name='title'
-               />
-               <button   type="button"  className="btn btn-outline-success">Publish</button>
+               <InputBase onChange={(e) => handleChange(e)} name='title' placeholder="Title" className={classes.textfield} />
+                <Button onClick={() => savePost()} variant="contained" color="primary">Publish</Button>
+               
+            
+            
            </FormControl>
 
            <TextareaAutosize
@@ -82,6 +94,9 @@ const CreateView = ()=> {
            name='description'
            />
        </Box>
+       </>
+     
+      
     )
      
 }
