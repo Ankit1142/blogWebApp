@@ -63,7 +63,7 @@ const CreateView = ()=> {
     const savePost = async () => {
          await createPost(post);
         // history.push('/');
-        history('/', { state: post });
+        history('/');
     }
 
     const handleChange = (e) => {

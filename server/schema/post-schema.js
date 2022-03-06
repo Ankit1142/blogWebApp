@@ -1,33 +1,33 @@
-import mongoose  from "mongoose";
+import mongoose from 'mongoose';
 
-
-const postSchema = mongoose.Schema({
-    title:{
-        type: 'string',
-        required:'true',
-        unique: 'true'
+const PostSchema = mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
     },
-    description:{
-        type: 'string',
-        required:'true'
+    description: {
+        type: String,
+        required: true
     },
-    picture:{
-        type: 'string',
-        required:'false'
+    picture: {
+        type: String,
+        required: false
     },
-    username:{
-        type: 'string',
-        required:'true'
+    username: {
+        type: String,
+        required: true
     },
-    categories:{
-        type: 'string',
-        required:'false'
+    categories: {
+        type: Array,
+        required: false   
     },
-    createdDate:{
-        type: 'date'
+    createdDate: {
+        type: Date
     }
-})
+});
 
-const post=mongoose.model('post',postSchema);
+
+const post = mongoose.model('post', PostSchema);
 
 export default post;
