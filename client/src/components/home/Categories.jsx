@@ -27,7 +27,7 @@ const Categories =() =>{
     return(
        <>
     
-       <Link to='/create'>
+             <Link to='/create'>
             <button  className="btn btn-outline-primary btn-lg" style={{margin:'15px 10px 15px 35px'}}>CREATE BLOG</button>
             </Link>
        <table className={classes.table}>
