@@ -1,31 +1,29 @@
-import { useEffect, useState } from 'react';
-import { Grid } from '@material-ui/core';
-import { Link, useLocation,useParams  } from 'react-router-dom';
+
+import { Grid, Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import Post from './Post';
+import { useState, useEffect  } from 'react';
 
-import { getPost,getAllPosts } from '../../service/api';
-
-const Posts = () => {
-    const [posts, getPosts] = useState([]);
-    const { search } = useLocation();
-
+import { getAllPosts } from '../../service/api';
+const Posts=() =>{
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
-        const fetchData = async () => { 
-            let data = await getAllPosts(search); // params in url
-            getPosts(data);
+        const fetchData = async () => {
+            let data = await getAllPosts();
+            console.log(data);
+            setPosts(data);
         }
         fetchData();
-    }, [search]);
+    }, [])
 
-    return (
-        posts.map(post => (
-            <Grid item lg = {4} sm = {4} xs = {12}>
-                <Link to = {`/details/${post._id}`} style = {{textDecoration: 'none', color: 'inherit'}}>
-                 <Post post={post}/>
+    return(
+        posts.map(post=>(
+            <Grid item lg={3} sm={4} xs={12}>
+                <Link to = {`/details/${post._id}`} style = {{textDecoration:'none', color : 'inherit'}}>
+                    <Post post = {post}/>
                 </Link>
             </Grid>
         ))
     )
 }
-
-export default Posts;
+ export default Posts;
